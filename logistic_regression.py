@@ -95,7 +95,7 @@ n1=int(input("exam1:"))
 n2=int(input("exam2:"))
 
 hn=h(z(n1,n2))		#n1 and n2 need to be normalized
-if(hn>0.5):
+if(hn>=0.5):
 	print("1")
 else:
 	print("0")

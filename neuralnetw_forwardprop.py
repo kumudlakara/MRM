@@ -1,5 +1,8 @@
 import scipy.io as sio
 import numpy as np
+import sys
+
+np.set_printoptions(threshold=sys.maxsize)
 global m
 m=5000
 mat=sio.loadmat('ex3data1.mat')
@@ -10,7 +13,7 @@ x=np.array(mat['X'])
 x=np.insert(x,0,1,axis=1)
 y=np.array(mat['y'])
 #print(x.shape)
-print(th1.shape)
+#print(th1.shape)
 #print(y.shape)
 #print(y)
 for i in range(5000):
@@ -49,17 +52,30 @@ for i in range(5000):
 hx=np.array(hx)
 hx=hx.reshape(5000,10)
 print(hx)
+print(hx.shape)
 numb=[]
 for i in range(5000):
 	maxm=np.max(hx[i])
 	#print(maxm)
 	_,pos=np.where(hx==maxm)
-	ele=pos
+	if pos==9:
+		
+		ele=0
+	else:
+		ele=pos+1
 	numb.append(ele)
+
 numb=np.array(numb)
 numb=numb.reshape(5000,1)
 print(numb)
+global sums
+sums=0
+for i in range(5000):
+	if(numb[i]==y[i]):
+		sums=sums+1
 
+acc=(sums/5000)*100
+print(acc)
 #print(hv)
 #print(hv.shape)
 #maxm=np.max(hv)

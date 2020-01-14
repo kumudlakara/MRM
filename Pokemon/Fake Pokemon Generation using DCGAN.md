@@ -124,7 +124,7 @@ ouptut:
 /usr/local/lib/python3.6/dist-packages/PIL/Image.py:989: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
   "Palette images with Transparency expressed in bytes should be "
 <matplotlib.image.AxesImage at 0x7f40a3e991d0>
-![]()
+![Training Images](https://github.com/kumudlakara/MRM/blob/master/Pokemon/Training_images_large.png)
 ```
 
 # Custom Weights Initialization 

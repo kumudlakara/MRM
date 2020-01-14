@@ -124,9 +124,14 @@ ouptut:
 /usr/local/lib/python3.6/dist-packages/PIL/Image.py:989: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
   "Palette images with Transparency expressed in bytes should be "
 <matplotlib.image.AxesImage at 0x7f40a3e991d0>
-![Training Images](Pokemon/Training_images_large.png)
-```
 
+
+```
+- Large Training Set
+![img](Training_images_large.png)
+
+- Small Training Set
+![img11](Training_images_small.png)
 # Custom Weights Initialization 
 ```sh
 def weights_init(m):
@@ -238,7 +243,6 @@ netG.apply(weights_init)
 # Print the model
 print(netG)
 
-!!OUTPUT!!!
 ```
 - Discriminator
 ```sh
@@ -256,7 +260,6 @@ netD.apply(weights_init)
 # Print the model
 print(netD)
 
-!!!OUTPUT!!!!
 ```
 # Setting Up Loss Functions and Optimizers
 
@@ -390,11 +393,25 @@ for epoch in range(num_epochs):
       plt.show()
 ```
 
+# Image outputs after certain number of epochs:
+These are outputs for 1250 epochs on the smaller dataset
+
+- After 900 epochs:
+![img8](pkmon_900_epochs.png)
+
+- After 1000 epochs:
+![img9](pkmon_1000_epochs.png)
+
+- After 1100 epochs:
+![img10](pkmon_1100_epochs.png)
+
+
 # Results
 The results are plotted by means of plotting the generator loss and the discriminator loss. The required optimal condition would be to have the discriminator loss around 0.5 and the generator loss somewhere between 0.5 to 2-3. Having a discriminator loss of 0.5 would mean that there is a 50-50 chance for the discriminator to classify an image as fake or real. This would inturn mean that the generator is efficient enough to produce fake images which are quite similar to the real images and hence difficult to distinguish by the discriminator.
 The various hyperparameters can therefore be tuned to achieve this optimal situation.
 
 - The number of epochs can be increased to a certain point to optimize the results as it would allow the model to learn better features however after a certain point the model may begin to overfit the dataset and hence the model performance begins to deteriorate. The model may also experience mode collapse wherein the generator begins to output fake images with very less diversity. Hence, the discirminator ideally should be able to identify generator mode collapse while its happening and assign the collapse point a low probability to force the generator to spread out.
+
 
 
 # Other Altenatives
@@ -432,6 +449,41 @@ class Generator(nn.Module):
 - - Generator:SELU and Discriminator:SELU- This produced a very ineffcient model with both generator loss very high around 27 and discriminator loss very low (0.001).
 - - Generator:SELU and Discriminator:LeakyReLU- This gave the generator loss as 4.4217 and the discriminator loss as 0.2070 hence performing better than the previous model.
 - - ORIGINAL:generator:ReLU and discriminator:LeakyReLU- This gave the generator loss as 2.7402 and discriminator loss as 0.6726 hence proving this alternative to be the best among the others.
+
+
+# Graphical Outputs:
+
+- Changing Learning Rate for 1250 epochs
+![img2](pkmon_lr_changing_graph.png)
+
+
+
+- Graph for 1000 Epochs no change in Learning Rate
+![img3](pkmon_1000_epochs_graphs.png)
+
+
+# Image Outputs:
+
+- Changing learning rate with generator and discriminator starting with different values
+![img7](Changing_learning_rate.png)
+
+
+
+- Decreasing learning rate
+![img4](pkmon_cnv_transpose_2d_lr_dec.png)
+
+
+
+- Using SELU and LeakyReLU
+![img5](selu_leakyrelu.png)
+
+
+
+- Changing learning rate with intitial as 0.0004
+![img6](pkmon_lr_changing_0.0004.png)
+
+
+
 
 
 
